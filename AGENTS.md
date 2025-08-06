@@ -25,6 +25,10 @@
   - Add comments for complex logic
    - No Cursor or Copilot rules present
 
+## UI Conventions
+- Use short syntax for links, e.g. `:href="route('forms.create')"` in Blade/Volt components.
+- Always add the `wire:navigate` attribute to navigation links/buttons for SPA navigation behavior.
+
 ## Creating Volt Page Components
 
 - To create a new Volt page component, use the following artisan command:
