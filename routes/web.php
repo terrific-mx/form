@@ -8,6 +8,10 @@ Volt::route('pricing', 'pages.pricing')->name('pricing');
 Volt::route('changelog', 'pages.changelog')->name('changelog');
 Volt::route('connect', 'pages.connect')->name('connect');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Volt::route('forms', 'pages.forms.index')->name('forms.index');
+});
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
