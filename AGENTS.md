@@ -23,4 +23,18 @@
 - **General:**
   - Write clear, maintainable code
   - Add comments for complex logic
-  - No Cursor or Copilot rules present
+   - No Cursor or Copilot rules present
+
+## Creating Volt Page Components
+
+- To create a new Volt page component, use the following artisan command:
+  ```
+  php artisan make:volt pages/forms/create
+  ```
+  - This will generate a Volt component at `resources/views/livewire/pages/forms/create.blade.php`.
+  - Use the `pages/forms/` folder for form-related pages, matching the structure for index/create/etc.
+- Register the new page in `routes/web.php` using:
+  ```php
+  Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
+  ```
+  - Place the route in the appropriate middleware group (e.g., `auth`, `verified`) as needed.
