@@ -13,15 +13,15 @@ describe('Form Index Page Access', function () {
     });
 
     it('allows authenticated users to access the page', function () {
-        actingAs(User::factory()->create());
+        actingAs(User::factory()->withSubscription()->create());
 
         get(route('forms.index'))->assertOk();
     });
 });
 
 it('shows only the authenticated user\'s forms on the index page', function () {
-    $user = User::factory()->create();
-    $otherUser = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
+    $otherUser = User::factory()->withSubscription()->create();
 
     $formA = Form::factory()->create(['user_id' => $user->id, 'name' => 'User Form 1']);
     $formB = Form::factory()->create(['user_id' => $user->id, 'name' => 'User Form 2']);

@@ -7,7 +7,7 @@ use Livewire\Volt\Volt;
 use function Pest\Laravel\actingAs;
 
 it('shows the create form page to authenticated, verified users', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
 
     actingAs($user)
         ->get('/forms/create')
@@ -17,7 +17,7 @@ it('shows the create form page to authenticated, verified users', function () {
 });
 
 it('creates a form with valid data', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
 
     $component = Volt::actingAs($user)
         ->test('pages.forms.create')
@@ -33,7 +33,7 @@ it('creates a form with valid data', function () {
 });
 
 it('shows validation errors when required fields are missing', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
 
     Volt::actingAs($user)
         ->test('pages.forms.create')
@@ -43,7 +43,7 @@ it('shows validation errors when required fields are missing', function () {
 });
 
 it('assigns a ULID to each new form', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
 
     Volt::actingAs($user)
         ->test('pages.forms.create')
