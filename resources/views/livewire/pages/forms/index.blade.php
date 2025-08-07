@@ -28,10 +28,10 @@ new class extends Component {
 }; ?>
 
 <div>
-    <flux:heading level="1" size="xl">Your Forms</flux:heading>
-    <flux:text class="mt-2 mb-6">View and manage all forms you’ve created.</flux:text>
-    <flux:button :href="route('forms.create')" wire:navigate variant="primary">
-        New Form
+    <flux:heading level="1" size="xl">{{ __('Your Forms') }}</flux:heading>
+    <flux:text class="mt-2 mb-6">{{ __('View and manage all forms you’ve created.') }}</flux:text>
+    <flux:button :href="route('forms.create')" wire:navigate variant="primary" class="mb-6">
+        {{ __('Create Form') }}
     </flux:button>
     <flux:table :paginate="$this->forms">
         <flux:table.columns>
@@ -40,13 +40,13 @@ new class extends Component {
                 :sorted="$sortBy === 'name'"
                 :direction="$sortDirection"
                 wire:click="sort('name')"
-            >Name</flux:table.column>
+            >{{ __('Name') }}</flux:table.column>
             <flux:table.column
                 sortable
                 :sorted="$sortBy === 'created_at'"
                 :direction="$sortDirection"
                 wire:click="sort('created_at')"
-            >Created</flux:table.column>
+            >{{ __('Created') }}</flux:table.column>
         </flux:table.columns>
         <flux:table.rows>
             @foreach ($this->forms as $form)

@@ -1,5 +1,9 @@
 {
     "Create Form": "Crear formulario",
     "Form Name": "Nombre del formulario",
-    "Enter form name": "Ingresa el nombre del formulario"
+    "Enter form name": "Ingresa el nombre del formulario",
+    "Your Forms": "Tus formularios",
+    "View and manage all forms you’ve created.": "Ver y administrar todos los formularios que has creado.",
+    "Name": "Nombre",
+    "Created": "Creado"
 }
