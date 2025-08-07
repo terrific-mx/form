@@ -3,6 +3,8 @@
 use App\Models\User;
 use function Pest\Laravel\get;
 use function Pest\Laravel\actingAs;
+use Livewire\Volt\Volt;
+use App\Models\Form;
 
 describe('Form Index Page Access', function () {
     it('redirects guests to the login page', function () {
@@ -14,4 +16,19 @@ describe('Form Index Page Access', function () {
 
         get(route('forms.index'))->assertOk();
     });
+});
+
+it('shows only the authenticated user\'s forms on the index page', function () {
+    $user = User::factory()->create();
+    $otherUser = User::factory()->create();
+
+    $formA = Form::factory()->create(['user_id' => $user->id, 'name' => 'User Form 1']);
+    $formB = Form::factory()->create(['user_id' => $user->id, 'name' => 'User Form 2']);
+    $formC = Form::factory()->create(['user_id' => $otherUser->id, 'name' => 'Other User Form']);
+
+    Volt::actingAs($user)
+        ->test('pages.forms.index')
+        ->assertSee('User Form 1')
+        ->assertSee('User Form 2')
+        ->assertDontSee('Other User Form');
 });
