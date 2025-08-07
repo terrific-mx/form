@@ -52,10 +52,10 @@ new class extends Component {
             @foreach ($this->forms as $form)
                 <flux:table.row :key="$form->id">
                     <flux:table.cell>
-    <flux:link :href="route('forms.show', $form)" wire:navigate>
-    {{ $form->name }}
-</flux:link>
-</flux:table.cell>
+                        <flux:link :href="route('forms.show', $form)" wire:navigate>
+                            {{ $form->name }}
+                        </flux:link>
+                    </flux:table.cell>
                     <flux:table.cell>{{ $form->created_at->format('Y-m-d H:i') }}</flux:table.cell>
                 </flux:table.row>
             @endforeach
