@@ -6,7 +6,7 @@ Recibir respuestas de formularios en sitios estáticos, portafolios o landing pa
 
 ## ¿Qué es Terrific Form?
 
-Terrific Form es una herramienta sencilla y poderosa para recibir respuestas de formularios desde sitios estáticos, apps JAMstack o plataformas donde no es posible ejecutar código propio. Permite:
+Terrific Form es una herramienta sencilla para recibir respuestas de formularios desde sitios estáticos, apps JAMstack o plataformas donde no es posible ejecutar código propio. Permite:
 
 - Generar endpoints únicos para proyectos en segundos.
 - Recibir respuestas de cualquier formulario HTML, desde cualquier lugar.
