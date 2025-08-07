@@ -2,6 +2,7 @@
 
 use App\Models\Form;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Auth;
 
 new class extends Component {
     public string $name = '';
@@ -11,9 +12,8 @@ new class extends Component {
         $this->validate([
             'name' => ['required', 'string', 'min:1'],
         ]);
-        Form::create([
+        Auth::user()->forms()->create([
             'name' => $this->name,
-            'user_id' => auth()->id(),
         ]);
     }
 };
