@@ -13,6 +13,13 @@ Volt::route('connect', 'pages.connect')->name('connect');
 Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('forms', 'pages.forms.index')->name('forms.index');
     Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
+
+    Route::get('forms/{form}', function (\App\Models\Form $form) {
+        if (auth()->id() !== $form->user_id) {
+            abort(403);
+        }
+        return response('OK');
+    })->name('forms.show');
 });
 
 Route::post('/f/{form:ulid}', [FormSubmissionController::class, 'store'])->name('form-submissions.store');
