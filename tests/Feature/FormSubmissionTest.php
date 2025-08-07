@@ -17,7 +17,7 @@ describe('Form Submission', function () {
             'field2' => 'value2',
         ]);
 
-        $response->assertStatus(200);
+        $response->assertRedirect("/f/{$form->ulid}/thank-you");
     });
 
     it('stores form responses via /f/{ulid}', function () {
@@ -28,7 +28,7 @@ describe('Form Submission', function () {
         ];
 
         post("/f/{$form->ulid}", $payload)
-            ->assertStatus(200);
+            ->assertRedirect("/f/{$form->ulid}/thank-you");
 
         $submission = Submission::first();
         expect($submission)->not->toBeNull();
