@@ -2,13 +2,14 @@
 
 use Livewire\Volt\Component;
 use App\Models\Form;
+use Illuminate\Support\Facades\Auth;
 
 new class extends Component {
     public $forms;
 
     public function mount()
     {
-        $this->forms = Form::where('user_id', auth()->id())->get();
+        $this->forms = Auth::user()->forms;
     }
 }; ?>
 
