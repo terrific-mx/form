@@ -16,8 +16,9 @@ Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(fu
 
     Volt::route('forms', 'pages.forms.index')->name('forms.index');
     Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
-
     Volt::route('forms/{form}', 'pages.forms.show')->name('forms.show');
+
+    Volt::route('billing-portal', 'billing-portal')->name('billing.portal');
 });
 
 Route::post('/f/{form:ulid}', [FormSubmissionController::class, 'store'])->name('form-submissions.store');
