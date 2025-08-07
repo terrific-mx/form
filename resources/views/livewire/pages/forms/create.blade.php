@@ -9,7 +9,7 @@ new class extends Component {
 <div>
     <form wire:submit="save" class="space-y-6 max-w-md mx-auto mt-10">
         <flux:input
-            wire:model.defer="name"
+            wire:model="name"
             label="Form Name"
             placeholder="Enter form name"
             required
