@@ -2,7 +2,7 @@
 
 Recibir respuestas de formularios en sitios estáticos, portafolios o landing pages hechos en Webflow, WordPress o HTML suele ser complicado. Montar un backend solo para gestionar mensajes de contacto o encuestas implica tiempo y recursos. Terrific Form resuelve este problema al permitir agregar formularios y recibir respuestas de manera segura, confiable y sin programar nada del lado del servidor.
 
-[Terrific Form](https://form.terrific.com) es un servicio hecho en México que facilita la creación de endpoints de formulario para cualquier sitio, eliminando la necesidad de un backend propio.
+[Terrific Form](https://form.terrific.com) es un servicio SaaS hecho en México que facilita la creación de endpoints de formulario para cualquier sitio, eliminando la necesidad de un backend propio.
 
 ## ¿Qué es Terrific Form?
 
@@ -34,8 +34,10 @@ Terrific Form es una herramienta sencilla para recibir respuestas de formularios
 - Seguridad y confiabilidad: Construido sobre Laravel, con protección de datos.
 - Ahorro de tiempo: Sin servidores ni configuraciones complejas.
 
-## Empieza hoy
+## Accesible para todos
 
-Terrific Form simplifica la recepción de formularios y ofrece una solución profesional y accesible. El registro es gratuito y permite comenzar a recibir respuestas en minutos.
+Terrific Form ofrece una solución profesional y accesible para la recepción de formularios, con un costo anual de solo $79 MXN. Por menos de lo que cuesta un café al mes, puedes olvidarte de complicaciones técnicas y recibir todos tus formularios de manera segura y centralizada.
+
+El registro es rápido y en minutos puedes comenzar a recibir respuestas en tu panel.
 
 Felices formularios.
