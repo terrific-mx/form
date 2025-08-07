@@ -16,6 +16,8 @@ new class extends Component {
         Auth::user()->forms()->create([
             'name' => $this->name,
         ]);
+
+        return $this->redirectRoute('forms.index', navigate: true);
     }
 };
 ?>
