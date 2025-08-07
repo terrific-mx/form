@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Form;
-use App\Models\Submission;
+use Illuminate\Http\Request;
 
 class FormSubmissionController extends Controller
 {
@@ -14,7 +12,7 @@ class FormSubmissionController extends Controller
         $form->submissions()->create([
             'data' => $request->all(),
         ]);
+
         return redirect("/f/{$form->ulid}/thank-you");
     }
 }
-
