@@ -15,7 +15,7 @@ Terrific Form es una herramienta sencilla para recibir respuestas de formularios
 
 ## Cómo funciona
 
-1. Regístrate en [form.terrific.com](https://form.terrific.com) y accede a tu cuenta.
+1. Regístrate en [form.terrific.com](https://form.terrific.com/register) y accede a tu cuenta.
 2. Crea un nuevo endpoint desde el panel y configura los campos necesarios.
 3. Copia la URL generada y pégala en el atributo action de tu formulario:
 
