@@ -3,7 +3,7 @@
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
-test('authenticated, verified user can view the create form page', function () {
+it('shows the create form page to authenticated, verified users', function () {
     $user = User::factory()->create(['email_verified_at' => now()]);
 
     actingAs($user)
