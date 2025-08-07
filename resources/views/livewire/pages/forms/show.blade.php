@@ -24,8 +24,8 @@ new class extends Component {
 
     public function showSubmissionModal(Submission $submission)
     {
+        $this->authorize('view', $submission);
         $this->selectedSubmission = $submission;
-
         Flux::modal('submission-details')->show();
     }
 }; ?>

@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 use App\Http\Controllers\FormSubmissionController;
 use App\Http\Controllers\FormThankYouController;
+use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.welcome')->name('home');
 Volt::route('pricing', 'pages.pricing')->name('pricing');
