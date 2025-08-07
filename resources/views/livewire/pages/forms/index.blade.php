@@ -28,6 +28,8 @@ new class extends Component {
 }; ?>
 
 <div>
+    <flux:heading level="1" size="xl">Your Forms</flux:heading>
+    <flux:text class="mt-2 mb-6">View and manage all forms you’ve created.</flux:text>
     <flux:button :href="route('forms.create')" wire:navigate variant="primary">
         New Form
     </flux:button>
