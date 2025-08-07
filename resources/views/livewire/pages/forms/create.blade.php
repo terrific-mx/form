@@ -14,6 +14,7 @@ new class extends Component {
 
         Auth::user()->forms()->create([
             'name' => $this->name,
+            'ulid' => (string) \Illuminate\Support\Str::ulid(),
         ]);
 
         return $this->redirectRoute('forms.index', navigate: true);
