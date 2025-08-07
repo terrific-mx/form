@@ -1,9 +1,9 @@
 <?php
+
+use App\Models\Form;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Models\Form;
-use App\Models\Submission;
-use Illuminate\Http\Request;
 
 Volt::route('/', 'pages.welcome')->name('home');
 Volt::route('pricing', 'pages.pricing')->name('pricing');
@@ -19,6 +19,7 @@ Route::post('/f/{form:ulid}', function (Request $request, Form $form) {
     $submission = $form->submissions()->create([
         'data' => $request->all(),
     ]);
+
     return response()->json(['id' => $submission->id], 200);
 });
 

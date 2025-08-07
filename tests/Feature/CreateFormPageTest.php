@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\User;
-use function Pest\Laravel\actingAs;
-use Livewire\Volt\Volt;
 use App\Models\Form;
+use App\Models\User;
+use Livewire\Volt\Volt;
+
+use function Pest\Laravel\actingAs;
 
 it('shows the create form page to authenticated, verified users', function () {
     $user = User::factory()->create();

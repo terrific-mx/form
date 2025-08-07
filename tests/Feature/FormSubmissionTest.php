@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\Form;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use function Pest\Laravel\post;
-use function Pest\Laravel\assertDatabaseHas;
 use App\Models\Submission;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 
