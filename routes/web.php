@@ -15,13 +15,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
 });
 
-Route::post('/f/{form:ulid}', function (Request $request, Form $form) {
-    $submission = $form->submissions()->create([
-        'data' => $request->all(),
-    ]);
+use App\Http\Controllers\FormSubmissionController;
 
-    return response()->json(['id' => $submission->id], 200);
-});
+Route::post('/f/{form:ulid}', [FormSubmissionController::class, 'store'])->name('form-submissions.store');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
