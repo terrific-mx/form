@@ -27,6 +27,7 @@ it('creates a form with valid data', function () {
     $form = Form::first();
     expect($form)->not->toBeNull();
     expect($form->name)->toBe('My Test Form');
+    expect($form->user->is($user))->toBeTrue();
 });
 
 it('shows validation errors when required fields are missing', function () {
