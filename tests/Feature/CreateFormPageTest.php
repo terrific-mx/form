@@ -18,11 +18,12 @@ it('shows the create form page to authenticated, verified users', function () {
 it('creates a form with valid data', function () {
     $user = User::factory()->create(['email_verified_at' => now()]);
 
-    Volt::actingAs($user)
+    $component = Volt::actingAs($user)
         ->test('pages.forms.create')
         ->set('name', 'My Test Form')
-        ->call('submit')
-        ->assertHasNoErrors();
+        ->call('submit');
+
+    $component->assertRedirect(route('forms.index'));
 
     $form = Form::first();
     expect($form)->not->toBeNull();
