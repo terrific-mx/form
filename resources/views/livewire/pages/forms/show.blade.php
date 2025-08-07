@@ -23,6 +23,14 @@ new class extends Component {
 }; ?>
 
 <div>
+    <flux:input
+        label="Form Submission Endpoint"
+        description="Use this as the action attribute in your HTML form."
+        :value="url('/f/' . $form->ulid)"
+        readonly
+        copyable
+        class="mb-6"
+    />
     <flux:heading level="1" size="xl">Submissions for Form #{{ $form->id }}</flux:heading>
     <flux:table :paginate="$this->submissions">
         <flux:table.columns>
