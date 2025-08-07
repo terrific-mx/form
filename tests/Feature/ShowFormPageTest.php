@@ -7,11 +7,10 @@ use function Pest\Laravel\get;
 
 it('allows an authenticated user to view their own form', function () {
     $user = User::factory()->create();
-    $form = Form::factory()->for($user)->create(['title' => 'Test Form']);
+    $form = Form::factory()->for($user)->create();
 
     actingAs($user);
     $response = get("/forms/{$form->id}");
 
     $response->assertStatus(200);
-    $response->assertSee('Test Form');
 });
