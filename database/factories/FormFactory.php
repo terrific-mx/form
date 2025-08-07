@@ -18,6 +18,7 @@ class FormFactory extends Factory
         return [
             'name' => $this->faker->words(3, true),
             'user_id' => User::factory(),
+            'ulid' => (string) str()->ulid(),
         ];
     }
 }
