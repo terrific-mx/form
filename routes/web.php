@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\FormSubmissionController;
+use App\Http\Controllers\FormThankYouController;
 
 Volt::route('/', 'pages.welcome')->name('home');
 Volt::route('pricing', 'pages.pricing')->name('pricing');
@@ -13,11 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
 });
 
-use App\Http\Controllers\FormSubmissionController;
-
 Route::post('/f/{form:ulid}', [FormSubmissionController::class, 'store'])->name('form-submissions.store');
-
-use App\Http\Controllers\FormThankYouController;
 
 Route::get('/f/{form:ulid}/thank-you', FormThankYouController::class)->name('forms.thank-you');
 
