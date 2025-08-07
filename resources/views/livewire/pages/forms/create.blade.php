@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 new class extends Component {
     public string $name = '';
@@ -14,7 +15,7 @@ new class extends Component {
 
         Auth::user()->forms()->create([
             'name' => $this->name,
-            'ulid' => (string) \Illuminate\Support\Str::ulid(),
+            'ulid' => (string) Str::ulid(),
         ]);
 
         return $this->redirectRoute('forms.index', navigate: true);
