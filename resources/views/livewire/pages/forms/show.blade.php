@@ -9,9 +9,7 @@ new class extends Component {
 
     public function mount(Form $form)
     {
-        if (auth()->id() !== $form->user_id) {
-            abort(403);
-        }
+        $this->authorize('view', $form);
         $this->form = $form;
     }
 }; ?>
