@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Form;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class FormFactory extends Factory
         return [
             'name' => $this->faker->words(3, true),
             'user_id' => User::factory(),
-            'ulid' => (string) str()->ulid(),
+            'ulid' => (string) Str::ulid(),
         ];
     }
 }
