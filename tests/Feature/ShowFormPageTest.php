@@ -14,3 +14,14 @@ it('allows an authenticated user to view their own form', function () {
 
     $response->assertStatus(200);
 });
+
+it('forbids access to a form not owned by the user', function () {
+    $owner = User::factory()->create();
+    $intruder = User::factory()->create();
+    $form = Form::factory()->for($owner)->create();
+
+    actingAs($intruder);
+    $response = get("/forms/{$form->id}");
+
+    $response->assertStatus(403);
+});
