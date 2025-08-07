@@ -14,7 +14,5 @@ describe('Form Thank You Page', function () {
         $response = get("/f/{$form->ulid}/thank-you");
 
         $response->assertStatus(200);
-        // Optionally, check for content:
-        // $response->assertSee('Thank you');
     });
 });
