@@ -17,6 +17,10 @@ use App\Http\Controllers\FormSubmissionController;
 
 Route::post('/f/{form:ulid}', [FormSubmissionController::class, 'store'])->name('form-submissions.store');
 
+Route::get('/f/{form:ulid}/thank-you', function (\App\Models\Form $form) {
+    return 'Thank you for your submission.';
+})->name('form-thank-you');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
