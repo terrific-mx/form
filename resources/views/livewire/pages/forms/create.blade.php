@@ -10,14 +10,14 @@ new class extends Component {
     <form wire:submit="save" class="space-y-6 max-w-md mx-auto mt-10">
         <flux:input
             wire:model="name"
-            label="Form Name"
-            placeholder="Enter form name"
+            label="{{ __('Form Name') }}"
+            placeholder="{{ __('Enter form name') }}"
             required
             autofocus
             class="w-full"
         />
         <flux:button type="submit" variant="primary" class="w-full">
-            Create Form
+            {{ __('Create Form') }}
         </flux:button>
     </form>
 </div>
