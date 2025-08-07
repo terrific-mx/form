@@ -11,10 +11,10 @@ class FormSubmissionController extends Controller
 {
     public function store(Request $request, Form $form)
     {
-        $submission = $form->submissions()->create([
+        $form->submissions()->create([
             'data' => $request->all(),
         ]);
-        return response()->json(['id' => $submission->id], 200);
+        return redirect("/f/{$form->ulid}/thank-you");
     }
 }
 
