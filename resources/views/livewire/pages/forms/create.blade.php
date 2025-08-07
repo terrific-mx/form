@@ -6,16 +6,11 @@ use Livewire\Volt\Component;
 new class extends Component {
     public string $name = '';
 
-    public function rules(): array
-    {
-        return [
-            'name' => ['required', 'string', 'min:1'],
-        ];
-    }
-
     public function submit()
     {
-        $this->validate();
+        $this->validate([
+            'name' => ['required', 'string', 'min:1'],
+        ]);
         Form::create(['name' => $this->name]);
     }
 };
