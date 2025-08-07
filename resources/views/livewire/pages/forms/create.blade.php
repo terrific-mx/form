@@ -12,6 +12,7 @@ new class extends Component {
         $this->validate([
             'name' => ['required', 'string', 'min:1'],
         ]);
+
         Auth::user()->forms()->create([
             'name' => $this->name,
         ]);
