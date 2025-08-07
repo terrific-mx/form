@@ -6,7 +6,7 @@ use Livewire\Volt\Volt;
 use App\Models\Form;
 
 it('shows the create form page to authenticated, verified users', function () {
-    $user = User::factory()->create(['email_verified_at' => now()]);
+    $user = User::factory()->create();
 
     actingAs($user)
         ->get('/forms/create')
@@ -16,7 +16,7 @@ it('shows the create form page to authenticated, verified users', function () {
 });
 
 it('creates a form with valid data', function () {
-    $user = User::factory()->create(['email_verified_at' => now()]);
+    $user = User::factory()->create();
 
     $component = Volt::actingAs($user)
         ->test('pages.forms.create')
@@ -32,11 +32,24 @@ it('creates a form with valid data', function () {
 });
 
 it('shows validation errors when required fields are missing', function () {
-    $user = User::factory()->create(['email_verified_at' => now()]);
+    $user = User::factory()->create();
 
     Volt::actingAs($user)
         ->test('pages.forms.create')
         ->set('name', '')
         ->call('submit')
         ->assertHasErrors(['name']);
+});
+
+it('assigns a ULID to each new form', function () {
+    $user = User::factory()->create();
+
+    Volt::actingAs($user)
+        ->test('pages.forms.create')
+        ->set('name', 'Form With ULID')
+        ->call('submit');
+
+    $form = Form::first();
+    expect($form)->not->toBeNull();
+    expect($form->ulid)->not->toBeEmpty();
 });
