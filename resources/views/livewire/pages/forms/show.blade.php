@@ -99,16 +99,25 @@ new class extends Component {
                     </flux:text>
                 </div>
                 <div class="space-y-4">
-                    @if (!empty($selectedSubmission->data) && is_array($selectedSubmission->data))
-                        @foreach ($selectedSubmission->data as $field => $value)
+                    @php $fields = $selectedSubmission->getDisplayFields(); @endphp
+                    @if (!empty($fields))
+                        @foreach ($fields as $field)
                             <div>
-                                <flux:heading level="3" size="md">{{ ucfirst(str_replace('_', ' ', $field)) }}</flux:heading>
-                                @if ($field === 'email' && filter_var($value, FILTER_VALIDATE_EMAIL))
+                                <flux:heading level="3" size="md" class="mb-1">{{ $field['label'] }}</flux:heading>
+                                @if ($field['type'] === 'email')
                                     <flux:text class="mt-1">
-                                        <flux:link href="mailto:{{ $value }}">{{ $value }}</flux:link>
+                                        <flux:link href="mailto:{{ $field['value'] }}">{{ $field['value'] }}</flux:link>
                                     </flux:text>
+                                @elseif ($field['type'] === 'array')
+                                    <ul class="pl-4 list-disc text-sm text-zinc-700 dark:text-zinc-300">
+                                        @foreach ($field['value'] as $k => $v)
+                                            <li><strong>{{ ucfirst(str_replace('_', ' ', $k)) }}:</strong> {{ is_array($v) ? json_encode($v) : $v }}</li>
+                                        @endforeach
+                                    </ul>
+                                @elseif ($field['type'] === 'longtext')
+                                    <pre class="bg-zinc-50 dark:bg-zinc-900 rounded p-2 text-sm whitespace-pre-wrap">{{ $field['value'] }}</pre>
                                 @else
-                                    <flux:text class="mt-1">{{ is_array($value) ? json_encode($value) : $value }}</flux:text>
+                                    <flux:text class="mt-1">{{ $field['value'] }}</flux:text>
                                 @endif
                             </div>
                         @endforeach
