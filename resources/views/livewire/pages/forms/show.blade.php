@@ -101,7 +101,7 @@ new class extends Component {
                 @foreach ($selectedSubmission->data as $field => $value)
                     <div>
                         <flux:heading level="3" size="md">{{ ucfirst(str_replace('_', ' ', $field)) }}</flux:heading>
-                        <flux:text>{{ is_array($value) ? json_encode($value) : $value }}</flux:text>
+                        <flux:text class="mt-1">{{ is_array($value) ? json_encode($value) : $value }}</flux:text>
                     </div>
                 @endforeach
             @else
