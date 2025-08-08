@@ -31,7 +31,12 @@ class Submission extends Model
 
     public function getSubject(): string
     {
-        return $this->data['subject'] ?? '—';
+        $subject = $this->data['subject'] ?? null;
+        if ($subject && trim($subject) !== '') {
+            return $subject;
+        }
+        // Use a translatable fallback string
+        return __("Submission #:id", ['id' => $this->id]);
     }
 
     public function getMessage(): string
