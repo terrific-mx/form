@@ -87,24 +87,28 @@ new class extends Component {
         class="md:w-96"
     >
         @if ($selectedSubmission)
-            <div class="space-y-6">
-                <div>
-                    <flux:heading size="lg">{{ __('Submission') }} #{{ $selectedSubmission->id }}</flux:heading>
-                    <flux:text class="mt-2">
-                        <p><strong>{{ __('Submitted At:') }}</strong> {{ $selectedSubmission->created_at }}</p>
-                    </flux:text>
-                </div>
-                <div>
-                    <flux:heading size="md">{{ __('Data') }}</flux:heading>
-                    <pre class="bg-gray-100 rounded p-2 text-xs overflow-x-auto">{{ json_encode($selectedSubmission->data, JSON_PRETTY_PRINT) }}</pre>
-                </div>
-                <div class="flex">
-                    <flux:spacer />
-                    <flux:modal.close>
-                        <flux:button variant="ghost">{{ __('Close') }}</flux:button>
-                    </flux:modal.close>
-                </div>
-            </div>
-        @endif
+    <div class="space-y-6">
+        <div>
+            <flux:heading level="2" size="xl">
+    {{ $selectedSubmission->getSubject() !== '—' ? $selectedSubmission->getSubject() : __('Submission') . ' #' . $selectedSubmission->id }}
+</flux:heading>
+            <flux:text lead class="mt-2">
+    {{ $selectedSubmission->formatted_created_at }} ({{ $selectedSubmission->created_at->diffForHumans() }})
+</flux:text>
+        </div>
+        <div class="space-y-4">
+            @if (!empty($selectedSubmission->data) && is_array($selectedSubmission->data))
+                @foreach ($selectedSubmission->data as $field => $value)
+                    <div>
+                        <flux:heading level="3" size="md">{{ ucfirst(str_replace('_', ' ', $field)) }}</flux:heading>
+                        <flux:text>{{ is_array($value) ? json_encode($value) : $value }}</flux:text>
+                    </div>
+                @endforeach
+            @else
+                <flux:text>{{ __('No data available for this submission.') }}</flux:text>
+            @endif
+        </div>
+    </div>
+@endif
     </flux:modal>
 </div>
