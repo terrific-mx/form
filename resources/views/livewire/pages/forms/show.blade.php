@@ -55,7 +55,7 @@ new class extends Component {
             </flux:table.columns>
             <flux:table.rows>
                 @forelse ($this->submissions as $submission)
-                    <flux:table.row :key="$submission->id">
+                    <flux:table.row :key="$submission->id" class="hover:bg-zinc-100 dark:hover:bg-zinc-800">
                         <flux:table.cell variant="strong" class="relative">
                             {{ $submission->getName() }}
                             <button wire:click="showSubmissionModal({{ $submission->id }})" class="absolute inset-0"></button>
