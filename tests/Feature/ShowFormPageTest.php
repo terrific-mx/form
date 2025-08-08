@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Form;
-use App\Models\User;
 use App\Models\Submission;
+use App\Models\User;
 use Livewire\Volt\Volt;
 
 use function Pest\Laravel\actingAs;

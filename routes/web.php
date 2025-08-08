@@ -12,7 +12,7 @@ Volt::route('changelog', 'pages.changelog')->name('changelog');
 Volt::route('connect', 'pages.connect')->name('connect');
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::redirect('dashboard', '/forms')->name('dashboard');
 
     Volt::route('forms', 'pages.forms.index')->name('forms.index');
     Volt::route('forms/create', 'pages.forms.create')->name('forms.create');
