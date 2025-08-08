@@ -36,6 +36,6 @@ Terrific Form es una herramienta sencilla para recibir respuestas de formularios
 
 ## Accesible para todos
 
-Terrific Form ofrece una solución profesional y accesible para la recepción de formularios, con un costo anual de solo $79 MXN. Por menos de lo que cuesta un café al mes, puedes olvidarte de complicaciones técnicas y recibir todos tus formularios de manera segura y centralizada.
+Terrific Form ofrece una solución profesional y accesible para la recepción de formularios, con un costo anual de solo $79 MXN. Comienza con una prueba gratuita de 30 días, sin compromiso. Por menos de lo que cuesta un café al mes, puedes olvidarte de complicaciones técnicas y recibir todos tus formularios de manera segura y centralizada.
 
 El registro es rápido y en minutos puedes comenzar a recibir respuestas en tu panel.
