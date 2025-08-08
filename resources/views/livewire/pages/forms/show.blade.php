@@ -56,14 +56,22 @@ new class extends Component {
             <flux:table.rows>
                 @forelse ($this->submissions as $submission)
                     <flux:table.row :key="$submission->id">
-                        <flux:table.cell>
-                            <flux:button size="sm" variant="ghost" wire:click="showSubmissionModal({{ $submission->id }})">
-                                {{ $submission->getName() }}
-                            </flux:button>
+                        <flux:table.cell variant="strong" class="relative">
+                            {{ $submission->getName() }}
+                            <button wire:click="showSubmissionModal({{ $submission->id }})" class="absolute inset-0"></button>
                         </flux:table.cell>
-                        <flux:table.cell>{{ $submission->getSubject() }}</flux:table.cell>
-                        <flux:table.cell class="line-clamp-1">{{ $submission->getMessage() }}</flux:table.cell>
-                        <flux:table.cell>{{ $submission->formatted_created_at }}</flux:table.cell>
+                        <flux:table.cell class="relative">
+                            {{ $submission->getSubject() }}
+                            <button wire:click="showSubmissionModal({{ $submission->id }})" class="absolute inset-0"></button>
+                        </flux:table.cell>
+                        <flux:table.cell class="line-clamp-1 relative">
+                            {{ $submission->getMessage() }}
+                            <button wire:click="showSubmissionModal({{ $submission->id }})" class="absolute inset-0"></button>
+                        </flux:table.cell>
+                        <flux:table.cell class="relative">
+                            {{ $submission->formatted_created_at }}
+                            <button wire:click="showSubmissionModal({{ $submission->id }})" class="absolute inset-0"></button>
+                        </flux:table.cell>
                     </flux:table.row>
                 @empty
                     <flux:table.row>
