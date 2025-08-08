@@ -61,7 +61,7 @@ new class extends Component {
                                  {{ $submission->getName() }}                            </flux:button>
                         </flux:table.cell>
                         <flux:table.cell>{{ $submission->getSubject() }}</flux:table.cell>
-                        <flux:table.cell>{{ $submission->getMessage() }}</flux:table.cell>
+                        <flux:table.cell class="line-clamp-1">{{ $submission->getMessage() }}</flux:table.cell>
                         <flux:table.cell>{{ $submission->formatted_created_at }}</flux:table.cell>
                     </flux:table.row>
                 @empty
