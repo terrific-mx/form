@@ -48,20 +48,22 @@ new class extends Component {
         <flux:heading level="2" size="lg" class="mb-4">Submissions</flux:heading>
         <flux:table :paginate="$this->submissions">
             <flux:table.columns>
-                <flux:table.column>ID</flux:table.column>
+                <flux:table.column>Name</flux:table.column>
+                <flux:table.column>Subject</flux:table.column>
+                <flux:table.column>Message</flux:table.column>
                 <flux:table.column>Submitted At</flux:table.column>
-                <flux:table.column>Data</flux:table.column>
             </flux:table.columns>
             <flux:table.rows>
                 @forelse ($this->submissions as $submission)
                     <flux:table.row :key="$submission->id">
                         <flux:table.cell>
                             <flux:button size="sm" variant="ghost" wire:click="showSubmissionModal({{ $submission->id }})">
-                                {{ $submission->id }}
+                                {{ $submission->data['name'] ?? '—' }}
                             </flux:button>
                         </flux:table.cell>
+                        <flux:table.cell>{{ $submission->data['subject'] ?? '—' }}</flux:table.cell>
+                        <flux:table.cell>{{ $submission->data['message'] ?? '—' }}</flux:table.cell>
                         <flux:table.cell>{{ $submission->created_at }}</flux:table.cell>
-                        <flux:table.cell><pre>{{ json_encode($submission->data, JSON_PRETTY_PRINT) }}</pre></flux:table.cell>
                     </flux:table.row>
                 @empty
                     <flux:table.row>
