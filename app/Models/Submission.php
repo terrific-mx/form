@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Submission extends Model
 {
+    use HasFactory;
+
     public static array $fieldLabels = [
         'name' => 'Name',
         'first_name' => 'First Name',
@@ -20,48 +22,6 @@ class Submission extends Model
     public static array $preferredOrder = [
         'name', 'first_name', 'last_name', 'email', 'subject', 'message'
     ];
-
-    public function getDisplayFields(): array
-    {
-        $data = $this->data ?? [];
-
-        $ordered = collect($data)
-            ->sortBy(function ($v, $k) {
-                $idx = array_search($k, self::$preferredOrder);
-                return $idx === false ? 999 : $idx;
-            })
-            ->toArray();
-        $fields = [];
-
-        foreach ($ordered as $field => $value) {
-            $label = self::$fieldLabels[$field] ?? ucfirst(str_replace('_', ' ', $field));
-
-            $isEmpty = is_array($value) ? empty($value) : (trim((string)$value) === '');
-
-            if ($isEmpty) continue;
-
-            $type = 'text';
-
-            if ($field === 'email' && filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                $type = 'email';
-            } elseif (is_array($value)) {
-                $type = 'array';
-            } elseif ($field === 'message' && strlen($value) > 80) {
-                $type = 'longtext';
-            }
-
-            $fields[] = [
-                'key' => $field,
-                'label' => $label,
-                'value' => $value,
-                'type' => $type,
-            ];
-        }
-
-        return $fields;
-    }
-
-    use HasFactory;
 
     protected function casts(): array
     {
@@ -112,5 +72,39 @@ class Submission extends Model
                 return $created->format('M j, Y');
             }
         });
+    }
+
+    public function getDisplayFields(): array
+    {
+        $data = $this->data ?? [];
+
+        return collect($data)
+            ->sortBy(function ($v, $k) {
+                $idx = array_search($k, self::$preferredOrder);
+
+                return $idx === false ? 999 : $idx;
+            })
+            ->filter(function ($value) {
+                return is_array($value) ? !empty($value) : (trim((string)$value) !== '');
+            })
+            ->map(function ($value, $field) {
+                $label = self::$fieldLabels[$field] ?? ucfirst(str_replace('_', ' ', $field));
+
+                $type = match (true) {
+                    $field === 'email' && filter_var($value, FILTER_VALIDATE_EMAIL) => 'email',
+                    is_array($value) => 'array',
+                    $field === 'message' && strlen($value) > 80 => 'longtext',
+                    default => 'text',
+                };
+
+                return [
+                    'key' => $field,
+                    'label' => $label,
+                    'value' => $value,
+                    'type' => $type,
+                ];
+            })
+            ->values()
+            ->toArray();
     }
 }
