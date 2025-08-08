@@ -39,7 +39,7 @@ new class extends Component {
         <flux:input
             label="{{ __('Form Submission Endpoint') }}"
             description="{{ __('Use this as the action attribute in your HTML form.') }}"
-            :value="url('/f/' . $form->ulid)"
+            :value="route('form-submissions.store', $form)"
             readonly
             copyable
         />
@@ -58,7 +58,8 @@ new class extends Component {
                     <flux:table.row :key="$submission->id">
                         <flux:table.cell>
                             <flux:button size="sm" variant="ghost" wire:click="showSubmissionModal({{ $submission->id }})">
-                                 {{ $submission->getName() }}                            </flux:button>
+                                {{ $submission->getName() }}
+                            </flux:button>
                         </flux:table.cell>
                         <flux:table.cell>{{ $submission->getSubject() }}</flux:table.cell>
                         <flux:table.cell class="line-clamp-1">{{ $submission->getMessage() }}</flux:table.cell>
