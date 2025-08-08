@@ -25,6 +25,7 @@ class SubmissionFactory extends Factory
             'data' => [
                 'email' => fake()->safeEmail(),
                 'name' => fake()->name(),
+                'subject' => fake()->sentence(),
                 'message' => fake()->sentence(),
             ],
         ];
