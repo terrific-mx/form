@@ -91,7 +91,7 @@ new class extends Component {
         @if ($selectedSubmission)
             <div class="space-y-6">
                 <div>
-                    <flux:heading level="2" size="xl">
+                    <flux:heading level="2" size="lg">
                         {{ $selectedSubmission->getSubject() !== '—' ? $selectedSubmission->getSubject() : __('Submission') . ' #' . $selectedSubmission->id }}
                     </flux:heading>
                     <flux:text lead class="mt-2">
@@ -103,7 +103,7 @@ new class extends Component {
                     @if (!empty($fields))
                         @foreach ($fields as $field)
                             <div>
-                                <flux:heading level="3" size="md" class="mb-1">{{ $field['label'] }}</flux:heading>
+                                <flux:heading level="3" class="mb-1">{{ $field['label'] }}</flux:heading>
                                 @if ($field['type'] === 'email')
                                     <flux:text class="mt-1">
                                         <flux:link href="mailto:{{ $field['value'] }}">{{ $field['value'] }}</flux:link>
