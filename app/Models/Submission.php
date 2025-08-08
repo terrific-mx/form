@@ -22,4 +22,19 @@ class Submission extends Model
     {
         return $this->belongsTo(Form::class);
     }
+
+    public function getName(): string
+    {
+        return $this->data['name'] ?? '—';
+    }
+
+    public function getSubject(): string
+    {
+        return $this->data['subject'] ?? '—';
+    }
+
+    public function getMessage(): string
+    {
+        return $this->data['message'] ?? '—';
+    }
 }

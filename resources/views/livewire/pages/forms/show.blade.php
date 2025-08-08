@@ -58,11 +58,10 @@ new class extends Component {
                     <flux:table.row :key="$submission->id">
                         <flux:table.cell>
                             <flux:button size="sm" variant="ghost" wire:click="showSubmissionModal({{ $submission->id }})">
-                                {{ $submission->data['name'] ?? '—' }}
-                            </flux:button>
+                                 {{ $submission->getName() }}                            </flux:button>
                         </flux:table.cell>
-                        <flux:table.cell>{{ $submission->data['subject'] ?? '—' }}</flux:table.cell>
-                        <flux:table.cell>{{ $submission->data['message'] ?? '—' }}</flux:table.cell>
+                        <flux:table.cell>{{ $submission->getSubject() }}</flux:table.cell>
+                        <flux:table.cell>{{ $submission->getMessage() }}</flux:table.cell>
                         <flux:table.cell>{{ $submission->created_at }}</flux:table.cell>
                     </flux:table.row>
                 @empty
