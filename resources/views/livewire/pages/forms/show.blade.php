@@ -51,7 +51,7 @@ new class extends Component {
                 <flux:table.column>Name</flux:table.column>
                 <flux:table.column>Subject</flux:table.column>
                 <flux:table.column>Message</flux:table.column>
-                <flux:table.column>Submitted At</flux:table.column>
+                <flux:table.column>Date</flux:table.column>
             </flux:table.columns>
             <flux:table.rows>
                 @forelse ($this->submissions as $submission)
@@ -62,7 +62,7 @@ new class extends Component {
                         </flux:table.cell>
                         <flux:table.cell>{{ $submission->getSubject() }}</flux:table.cell>
                         <flux:table.cell>{{ $submission->getMessage() }}</flux:table.cell>
-                        <flux:table.cell>{{ $submission->created_at }}</flux:table.cell>
+                        <flux:table.cell>{{ $submission->formatted_created_at }}</flux:table.cell>
                     </flux:table.row>
                 @empty
                     <flux:table.row>
