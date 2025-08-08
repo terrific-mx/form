@@ -33,25 +33,25 @@ new class extends Component {
 <div>
     <div class="mb-6">
     <flux:heading level="1" size="xl">{{ $form->name }}</flux:heading>
-    <flux:text class="mt-2">Form details and recent submissions.</flux:text>
+    <flux:text class="mt-2">{{ __('Form details and recent submissions.') }}</flux:text>
 </div>
     <div class="mb-6">
         <flux:input
-            label="Form Submission Endpoint"
-            description="Use this as the action attribute in your HTML form."
+            label="{{ __('Form Submission Endpoint') }}"
+            description="{{ __('Use this as the action attribute in your HTML form.') }}"
             :value="url('/f/' . $form->ulid)"
             readonly
             copyable
         />
     </div>
     <div class="mb-6">
-        <flux:heading level="2" size="lg" class="mb-4">Submissions</flux:heading>
+        <flux:heading level="2" size="lg" class="mb-4">{{ __('Submissions') }}</flux:heading>
         <flux:table :paginate="$this->submissions">
             <flux:table.columns>
-                <flux:table.column>Name</flux:table.column>
-                <flux:table.column>Subject</flux:table.column>
-                <flux:table.column>Message</flux:table.column>
-                <flux:table.column>Date</flux:table.column>
+                <flux:table.column>{{ __('Name') }}</flux:table.column>
+                <flux:table.column>{{ __('Subject') }}</flux:table.column>
+                <flux:table.column>{{ __('Message') }}</flux:table.column>
+                <flux:table.column>{{ __('Date') }}</flux:table.column>
             </flux:table.columns>
             <flux:table.rows>
                 @forelse ($this->submissions as $submission)
@@ -66,7 +66,7 @@ new class extends Component {
                     </flux:table.row>
                 @empty
                     <flux:table.row>
-                        <flux:table.cell colspan="3">No submissions yet.</flux:table.cell>
+                        <flux:table.cell colspan="3">{{ __('No submissions yet.') }}</flux:table.cell>
                     </flux:table.row>
                 @endforelse
             </flux:table.rows>
@@ -80,19 +80,19 @@ new class extends Component {
         @if ($selectedSubmission)
             <div class="space-y-6">
                 <div>
-                    <flux:heading size="lg">Submission #{{ $selectedSubmission->id }}</flux:heading>
+                    <flux:heading size="lg">{{ __('Submission') }} #{{ $selectedSubmission->id }}</flux:heading>
                     <flux:text class="mt-2">
-                        <p><strong>Submitted At:</strong> {{ $selectedSubmission->created_at }}</p>
+                        <p><strong>{{ __('Submitted At:') }}</strong> {{ $selectedSubmission->created_at }}</p>
                     </flux:text>
                 </div>
                 <div>
-                    <flux:heading size="md">Data</flux:heading>
+                    <flux:heading size="md">{{ __('Data') }}</flux:heading>
                     <pre class="bg-gray-100 rounded p-2 text-xs overflow-x-auto">{{ json_encode($selectedSubmission->data, JSON_PRETTY_PRINT) }}</pre>
                 </div>
                 <div class="flex">
                     <flux:spacer />
                     <flux:modal.close>
-                        <flux:button variant="ghost">Close</flux:button>
+                        <flux:button variant="ghost">{{ __('Close') }}</flux:button>
                     </flux:modal.close>
                 </div>
             </div>

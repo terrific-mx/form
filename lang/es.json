@@ -5,5 +5,17 @@
     "Your Forms": "Tus formularios",
     "View and manage all forms you’ve created.": "Ver y administrar todos los formularios que has creado.",
     "Name": "Nombre",
-    "Created": "Creado"
+    "Created": "Creado",
+    "Form details and recent submissions.": "Detalles del formulario y envíos recientes.",
+    "Form Submission Endpoint": "Punto de envío del formulario",
+    "Use this as the action attribute in your HTML form.": "Usa esto como el atributo action en tu formulario HTML.",
+    "Submissions": "Envíos",
+    "Subject": "Asunto",
+    "Message": "Mensaje",
+    "Date": "Fecha",
+    "No submissions yet.": "Aún no hay envíos.",
+    "Submission": "Envío",
+    "Submitted At:": "Enviado el:",
+    "Data": "Datos",
+    "Close": "Cerrar"
 }
