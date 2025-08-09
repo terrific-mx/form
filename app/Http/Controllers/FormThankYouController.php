@@ -8,6 +8,6 @@ class FormThankYouController extends Controller
 {
     public function __invoke(Form $form)
     {
-        return 'Thank you for your submission.';
+        return view('forms.thank-you');
     }
 }
