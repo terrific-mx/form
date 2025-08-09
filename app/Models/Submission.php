@@ -20,7 +20,7 @@ class Submission extends Model
     ];
 
     public static array $preferredOrder = [
-        'name', 'first_name', 'last_name', 'email', 'subject', 'message'
+        'name', 'first_name', 'last_name', 'email', 'subject', 'message',
     ];
 
     protected function casts(): array
@@ -48,8 +48,9 @@ class Submission extends Model
         if ($subject && trim($subject) !== '') {
             return $subject;
         }
+
         // Use a translatable fallback string
-        return __("Submission #:id", ['id' => $this->id]);
+        return __('Submission #:id', ['id' => $this->id]);
     }
 
     public function getMessage(): string
@@ -85,7 +86,7 @@ class Submission extends Model
                 return $idx === false ? 999 : $idx;
             })
             ->filter(function ($value) {
-                return is_array($value) ? !empty($value) : (trim((string)$value) !== '');
+                return is_array($value) ? ! empty($value) : (trim((string) $value) !== '');
             })
             ->map(function ($value, $field) {
                 $label = self::$fieldLabels[$field] ?? ucfirst(str_replace('_', ' ', $field));

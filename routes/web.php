@@ -38,4 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('subscription-required', 'pages.subscription-required')->name('subscription-required');
 });
 
+if (app()->environment(['local', 'testing'])) {
+    Route::view('/test-form', 'test-form')->name('test-form');
+}
+
 require __DIR__.'/auth.php';
