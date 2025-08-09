@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Models\Form;
+use App\Models\Submission;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -12,8 +14,8 @@ class FormSubmissionReceived extends Notification
     use Queueable;
 
     public function __construct(
-        public readonly $form,
-        public readonly $submission,
+        public readonly Form $form,
+        public readonly Submission $submission,
     ) {}
 
 
