@@ -2,7 +2,10 @@
 
 use App\Models\Form;
 use App\Models\Submission;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\FormSubmissionReceived;
 
 use function Pest\Laravel\post;
 
@@ -37,5 +40,30 @@ describe('Form Submission', function () {
             'field1' => 'test value',
             'field2' => 'another value',
         ]);
+    });
+
+    it('sends a notification to the form owner when a new submission is received', function () {
+        Notification::fake();
+
+        $owner = User::factory()->create(['email' => 'owner@example.com']);
+        $form = Form::factory()->for($owner)->create();
+        $payload = [
+            'field1' => 'notify value',
+            'field2' => 'another notify',
+        ];
+
+        post("/f/{$form->ulid}", $payload)
+            ->assertRedirect("/f/{$form->ulid}/thank-you");
+
+        $submission = Submission::first();
+
+        Notification::assertSentTo(
+            $owner,
+            FormSubmissionReceived::class,
+            function ($notification, $channels) use ($form, $submission) {
+                return $notification->form->is($form)
+                    && $notification->submission->is($submission);
+            }
+        );
     });
 });
