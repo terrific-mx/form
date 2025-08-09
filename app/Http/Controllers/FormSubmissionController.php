@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
+use App\Notifications\FormSubmissionReceived;
 use Illuminate\Http\Request;
 
 class FormSubmissionController extends Controller
@@ -13,10 +14,7 @@ class FormSubmissionController extends Controller
             'data' => $request->all(),
         ]);
 
-        // Minimal: notify form owner
-        if ($form->user) {
-            $form->user->notify(new \App\Notifications\FormSubmissionReceived($form, $submission));
-        }
+        $form->user->notify(new FormSubmissionReceived($form, $submission));
 
         return redirect("/f/{$form->ulid}/thank-you");
     }
