@@ -35,9 +35,11 @@ class FormSubmissionReceived extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject(__('New Submission Received: :form', ['form' => $this->form->name ?? 'Form']))
+            ->line(__('You’ve received a new submission for your form: :form', ['form' => $this->form->name ?? 'Untitled Form']))
+            ->action(__('View Form'), route('forms.show', $this->form))
+            ->line(__('Thank you for using Terrific Form!'));
+
     }
 
     /**

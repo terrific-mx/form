@@ -77,5 +77,9 @@
     "log in": "iniciar sesión",
     "A reset link will be sent if the account exists.": "Se enviará un enlace de restablecimiento si la cuenta existe.",
     "Thank you!": "¡Gracias!",
-    "Your response has been received.": "Tu respuesta ha sido recibida."
+    "Your response has been received.": "Tu respuesta ha sido recibida.",
+    "New Submission Received: :form": "Nuevo envío recibido: :form",
+    "You’ve received a new submission for your form: :form": "Has recibido un nuevo envío para tu formulario: :form",
+    "View Form": "Ver formulario",
+    "Thank you for using Terrific Form!": "¡Gracias por usar Terrific Form!"
 }
