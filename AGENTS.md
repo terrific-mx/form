@@ -15,6 +15,7 @@
   - StudlyCase for classes, camelCase for methods/variables
   - Group `use` imports
   - Use PHP 8+ types
+  - Prefer promoted public readonly properties for value objects, DTOs, and notification constructors (PHP 8.3+)
   - Handle errors with exceptions or Laravel validation
 - **JavaScript:**
   - ES6+ syntax, Vite/Tailwind, Prettier if present
