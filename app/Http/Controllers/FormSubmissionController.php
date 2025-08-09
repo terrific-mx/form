@@ -9,9 +9,14 @@ class FormSubmissionController extends Controller
 {
     public function store(Request $request, Form $form)
     {
-        $form->submissions()->create([
+        $submission = $form->submissions()->create([
             'data' => $request->all(),
         ]);
+
+        // Minimal: notify form owner
+        if ($form->user) {
+            $form->user->notify(new \App\Notifications\FormSubmissionReceived($form, $submission));
+        }
 
         return redirect("/f/{$form->ulid}/thank-you");
     }
