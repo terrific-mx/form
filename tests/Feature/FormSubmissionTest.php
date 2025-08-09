@@ -3,9 +3,9 @@
 use App\Models\Form;
 use App\Models\Submission;
 use App\Models\User;
+use App\Notifications\FormSubmissionReceived;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\FormSubmissionReceived;
 
 use function Pest\Laravel\post;
 

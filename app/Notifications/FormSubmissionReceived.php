@@ -18,7 +18,6 @@ class FormSubmissionReceived extends Notification implements ShouldQueue
         public readonly Submission $submission,
     ) {}
 
-
     /**
      * Get the notification's delivery channels.
      *
