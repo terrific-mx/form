@@ -11,17 +11,11 @@ class FormSubmissionReceived extends Notification
 {
     use Queueable;
 
-    public $form;
-    public $submission;
+    public function __construct(
+        public readonly $form,
+        public readonly $submission,
+    ) {}
 
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct($form, $submission)
-    {
-        $this->form = $form;
-        $this->submission = $submission;
-    }
 
     /**
      * Get the notification's delivery channels.
