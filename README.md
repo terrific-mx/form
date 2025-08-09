@@ -48,6 +48,16 @@ Terrific Form is a Laravel application that allows you to generate form endpoint
 
 ---
 
+### Production Note
+
+When running in production, you must run the Laravel queue worker to process queued jobs (such as notifications and emails):
+
+```bash
+php artisan queue:work
+```
+
+You should run this as a background process or use a process manager like Supervisor to ensure it stays running.
+
 ## Usage
 
 1. **Create a form endpoint:**
